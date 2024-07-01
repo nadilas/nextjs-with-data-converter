@@ -1,4 +1,7 @@
 import { Client, Connection } from '@temporalio/client';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import dataConverter from '$dc';
 
 const client: Client = makeClient();
 
@@ -9,7 +12,7 @@ function makeClient(): Client {
   });
   return new Client({ connection,
     dataConverter: {
-      payloadConverterPath: require.resolve('./data-converter')
+      payloadConverterPath: dataConverter
     },
   });
 }
